@@ -84,7 +84,7 @@ class Loginpage extends React.Component {
               name="button"
               onClick={this.handleSubmit}
             >
-              submit
+              Login
             </button>
           </div>
         </div>
