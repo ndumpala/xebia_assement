@@ -17,7 +17,7 @@ const DropDownGroup = React.memo(({ categoryFilter }) => {
 
   return (
     <div className="margin-vertical-md">
-      <div className="margin-vertical-sm">{type}</div>
+      <div className="margin-vertical-sm padding-horizontal-md text-size-sm">{type}</div>
       {renderDropDowns()}
     </div>
   );

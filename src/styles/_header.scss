@@ -1,9 +1,4 @@
-// .keywordSearch{
-//   //width: 50%;
-// }
-
 .checboxLabel {
-  //@debugwidth: 5px;
   font-size: 20px;
 }
 
@@ -17,5 +12,27 @@ ul {
 }
 
 .listing {
-  width: 200px;
+  width: 250px;
+}
+
+.footer{
+  height: 100px
+}
+
+.dropDown {
+  margin-top: 21px;
+  select{
+    width: 100px;
+    option {
+      width: 100px;
+      margin: 7px;
+    }
+  }
+}
+
+.searchBox {
+  input {
+    width: 900px;
+    height: 40px;
+  }
 }

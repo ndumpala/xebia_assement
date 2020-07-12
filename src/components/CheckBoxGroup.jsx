@@ -1,19 +1,34 @@
 import React from "react";
+import { connect } from 'react-redux';
 import CheckBox from "../components/CheckBox";
 
 const CheckBoxGroup = React.memo(({
-  categoryFilter
+  categoryFilter,
+  updateListings
 }) => {
 
   const { type, values } = categoryFilter;
 
+  const handleCheck = async  (e) => {
+    const query = "brand";
+    const value = e.target.name;
+    const response = await fetch(`https://xebiascart.herokuapp.com/products?${query}=${value}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8"
+        }
+      });
+      updateListings(await response.json())
+  }
+
   const renderCheckBoxes = () => {
-    const filters = values.slice(0, 20);
+    const filters = values.slice(0, 1000);
     
     return filters.length > 0 && filters.map((details, index) => {
         return (
           <li key={index}>
-            <CheckBox key={index} details={details}/>
+            <CheckBox key={index} details={details} onChange={event => handleCheck(event)} />
           </li>
         );
     });
@@ -21,8 +36,8 @@ const CheckBoxGroup = React.memo(({
 
   return (
     <div className="margin-vertical-md">
-      <div className="margin-vertical-sm">{type}</div>
-      <div className="">
+      <div className="margin-vertical-sm padding-horizontal-md text-size-sm">{type}</div>
+      <div className="margin-horizontal-sm">
         <ul>
           {renderCheckBoxes()}
         </ul>
@@ -37,4 +52,15 @@ const CheckBoxGroup = React.memo(({
   );
 });
 
-export default CheckBoxGroup;
+const mapDispatchToProps = dispatch => {
+  return {
+    updateListings: data => {
+      dispatch({type: "FETCH_LISTINGS", payload: data})
+      }
+    }
+}
+
+export default connect(null,
+  mapDispatchToProps
+)(CheckBoxGroup);
+

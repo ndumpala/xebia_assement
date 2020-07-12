@@ -30,13 +30,11 @@ function FilterPanelContainer() {
   const renderFilters = () => {
     return data && data.length > 0 && (
       <>
-      <div className="">{multiselectFilters()}</div>
-      <div className="">{multiDropDownFilters()}</div>
+      <div>{multiselectFilters()}</div>
+      <div>{multiDropDownFilters()}</div>
       </>
     );
   };
-
-  //console.log(data, "data");
 
   return (
     <div className="display-flex flex-column">

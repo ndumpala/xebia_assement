@@ -1,11 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
-//import { bindActionCreators } from 'redux';
-
-import {
-  fetchLogin,
-} from '../actions/fetchLoginAction';
-
+import { connect } from "react-redux";
 
 class Loginpage extends React.Component {
   constructor(props) {
@@ -14,7 +8,6 @@ class Loginpage extends React.Component {
       userName: "",
       password: ""
     };
-
     this.handleUserChange = this.handleUserChange.bind(this);
     this.handlePassWordChange = this.handlePassWordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,27 +35,29 @@ class Loginpage extends React.Component {
     );
 
     const user = await response.json();
+
     user.map(user => {
       if (user.username === userName && user.password === password) {
-        console.log("passed");
-        this.props.sendLogin({userName: userName, login: true});
-        history.push('/searchResultsPage');
+        console.log("log In success full");
+        this.props.sendLogin({ userName: userName, login: true });
+        history.push("/searchResultsPage");
         return true;
       }
-      console.log("error handling goes here");
+      alert("please inter valid details");
+      console.log("log In failure error handling goes here");
       return false;
     });
   }
 
   render() {
     return (
-      <div className="App">
-        <h1 className="">sCart</h1>
-        <div>
-          <div>Login</div>
+      <div className="App bgBlack color-white">
+        <h1 className="padding-vertical-lg margin-horizontal-lg">sCart</h1>
+        <div class="login bgBlack text-center padding-vertical-xlg text-size-sm">
+          <div>LogIn</div>
           <div className="margin-vertical-lg">
             <label htmlFor="userName">
-              User Name <span className="required">*</span>
+              User Name:
             </label>
             <input
               type="text"
@@ -73,9 +68,9 @@ class Loginpage extends React.Component {
               required
             />
           </div>
-          <div className="margin-vertical-lg">
+          <div className="margin-vertical-lg dispaly-flex flex-space-between">
             <label htmlFor="password">
-              Password <span className="required">*</span>
+              Password:
             </label>
             <input
               type="password"
@@ -88,11 +83,11 @@ class Loginpage extends React.Component {
           </div>
           <div className="margin-vertical-lg">
             <button
-              className="success"
+              className="success text-size-sm"
               name="button"
               onClick={this.handleSubmit}
             >
-              Login
+              LogIn
             </button>
           </div>
         </div>
@@ -100,17 +95,16 @@ class Loginpage extends React.Component {
     );
   }
 }
+
 const mapDispatchToProps = dispatch => {
-
-return {
-  sendLogin: data => {
-    dispatch({type: "FETCH_LOGIN_SUCCESS", payload: data})
+  return {
+    sendLogin: data => {
+      dispatch({ type: "FETCH_LOGIN_SUCCESS", payload: data });
     }
-  }
-}
-  
+  };
+};
 
-export default connect(null,
+export default connect(
+  null,
   mapDispatchToProps
 )(Loginpage);
-

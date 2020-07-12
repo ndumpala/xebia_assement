@@ -15,8 +15,8 @@ const DropDown = React.memo(({ values }) => {
   }
 
   return (
-    <div className="margin-horizontal-sm">
-      <select>
+    <div className="dropDown margin-horizontal-lg">
+      <select className="margin-horizontal-sm padding-horizontal-sm padding-vertical-sm">
         {renderDropDown()}
       </select>
     </div>
