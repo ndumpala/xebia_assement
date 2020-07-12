@@ -1,4 +1,11 @@
 import React from "react";
+import { connect } from 'react-redux';
+//import { bindActionCreators } from 'redux';
+
+import {
+  fetchLogin,
+} from '../actions/fetchLoginAction';
+
 
 class Loginpage extends React.Component {
   constructor(props) {
@@ -38,6 +45,7 @@ class Loginpage extends React.Component {
     user.map(user => {
       if (user.username === userName && user.password === password) {
         console.log("passed");
+        this.props.sendLogin({userName: userName, login: true});
         history.push('/searchResultsPage');
         return true;
       }
@@ -92,5 +100,17 @@ class Loginpage extends React.Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
 
-export default Loginpage;
+return {
+  sendLogin: data => {
+    dispatch({type: "FETCH_LOGIN_SUCCESS", payload: data})
+    }
+  }
+}
+  
+
+export default connect(null,
+  mapDispatchToProps
+)(Loginpage);
+

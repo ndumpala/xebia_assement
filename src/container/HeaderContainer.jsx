@@ -1,6 +1,9 @@
 import React from "react";
+import { connect } from 'react-redux';
 
-function HeaderContainer() {
+function HeaderContainer(props) {
+   const { userName, login } = props;
+
   return (
     <div className="display-flex flex-space-between">
       <div>
@@ -12,9 +15,27 @@ function HeaderContainer() {
         />
       </div>
       <div>search box</div>
-      <div>greetings</div>
+      {login &&<div>Welcome {userName}</div>}
     </div>
   );
 }
 
-export default HeaderContainer;
+function mapStateToProps(state) {
+  
+  const {
+    tasks
+  } = state;
+
+  const { userName, login} = tasks;
+
+  console.log(state, tasks, userName, login,'state');
+
+  return {
+    userName,
+    login
+  };
+}
+
+export default connect(
+  mapStateToProps,
+)(HeaderContainer);

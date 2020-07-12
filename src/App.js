@@ -1,20 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import login from './pages/LoginPage';
 import searchResultsPage from './pages/SearchResultsPage';
 
-
-function App() {
+const App = ({ store }) =>{
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/" exact strict component={login} />
-          <Route path="/searchResultsPage" component={searchResultsPage} />
-          {/* <Route component={errorPage} /> */}
-        </Switch>
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" exact strict component={login} />
+            <Route path="/searchResultsPage" component={searchResultsPage} />
+            {/* <Route component={errorPage} /> */}
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

@@ -9,19 +9,8 @@ const ListingCard= React.memo(({
 
   const  { final_price } = price;
   const  { color } = colour;
-  // const renderCheckBoxes = () => {
-  //   const filters = values.slice(0, 20);
-    
-  //   return filters.length > 0 && filters.map((details, index) => {
-  //       return (
-  //         <li key={index}>
-  //           <CheckBox key={index} details={details}/>
-  //         </li>
-  //       );
-  //   });
-  // }
 
-  console.log( brand,image, color, discount, title, final_price, 'value');
+  //console.log( brand,image, color, discount, title, final_price, 'value');
 
   var divStyle = {
     'background-color': color,
@@ -29,7 +18,6 @@ const ListingCard= React.memo(({
     height: '15px'
   };
   
-
   return (
     <div className="listing margin-horizontal-md">
         <div className="text-center">
