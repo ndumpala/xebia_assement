@@ -34,6 +34,9 @@
 .flex-column {
   flex-direction : column;
 }
+.flex-warp {
+  flex-wrap : wrap;
+}
 
 .flex-center {
   justify-content: $center;

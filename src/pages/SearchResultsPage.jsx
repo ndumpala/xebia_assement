@@ -1,6 +1,8 @@
 import React from "react";
 import HeaderContainer from "../container/HeaderContainer";
 import FooterContainer from "../container/FooterContainer";
+import FilterPanelContainer from "../container/FilterPanelContainer";
+import ListingCardContainer from "../container/ListingCardContainer";
 
 function SearchResultsPage() {
   return (
@@ -8,10 +10,10 @@ function SearchResultsPage() {
       <HeaderContainer />
       <div className="display-flex flex-space-between">
         <div className="fliterContainer">
-          test
+          <FilterPanelContainer />
         </div>
         <div className="listingsContainer">
-          test2
+          <ListingCardContainer />
         </div>
       </div>
       <FooterContainer />
