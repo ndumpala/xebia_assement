@@ -1,13 +1,13 @@
 import React from "react";
 
 function FooterContainer() {
-  
+
   return (
-    <div className="display-flex flex-space-between">
-      <div>
-        @abc.com
+    <div className="footer flex-center-align display-flex bgBlack color-white margin-vertical-md margin-collapse-bottom flex-space-between">
+      <div className="padding-horizontal-md text-size-md">
+        Thank you Visit Again....!
       </div>
-      <div>
+      <div className="padding-horizontal-md text-size-md">
         sCart
       </div>
     </div>

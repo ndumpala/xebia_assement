@@ -13,6 +13,9 @@ ul {
 
 .listing {
   width: 250px;
+  padding: 14px;
+  border: 1px solid black;
+  margin: 14px;
 }
 
 .footer{
@@ -35,4 +38,8 @@ ul {
     width: 900px;
     height: 40px;
   }
+}
+
+.error {
+  color: red;
 }

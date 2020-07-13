@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { connect } from 'react-redux';
 import ListingCard from "../components/ListingCard";
 
-const ListingCardContainer = React.memo(() => {
-  const [listings, setListings] = useState();
+const ListingCardContainer = React.memo(({listings, updateListings}) => {
 
   useEffect(() => {
     async function fetchFilterData() {
-      const response = await fetch("https://xebiascart.herokuapp.com/products?title=Lotto");
+      const response = await fetch("https://xebiascart.herokuapp.com/products");
       const listingsData = await response.json();
-      setListings(listingsData);
+      return updateListings(listingsData);
     }
     fetchFilterData();
   }, []);
 
-  
-
   const renderListings = () => {
-    console.log(listings, 'listings');
-    
     return listings && listings.length > 0 && listings.map((details, index) => {
       return (
         <ListingCard listing={details} key={index} />
@@ -32,4 +28,26 @@ const ListingCardContainer = React.memo(() => {
   );
 });
 
-export default ListingCardContainer;
+function mapStateToProps(state) {
+  const {
+    tasks
+  } = state;
+
+  const { listings } = tasks;
+  return {
+    listings,
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateListings: data => {
+      dispatch({type: "FETCH_LISTINGS", payload: data})
+      }
+    }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListingCardContainer);

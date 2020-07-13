@@ -5,8 +5,8 @@ const DropDownGroup = React.memo(({ categoryFilter }) => {
   const { type, values } = categoryFilter;
 
   const renderDropDowns = () => {
-   const valuesReverse = [...values];
-    
+  const valuesReverse = [...values];
+
     return (
       <div className="display-flex flex-row">
         <DropDown values={values}/>

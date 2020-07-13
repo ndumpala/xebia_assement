@@ -2,10 +2,10 @@ import React from "react";
 
 const DropDown = React.memo(({ values }) => {
   const renderDropDown = () => {
-    
+
     return values.length > 0 && values.map((details, index) => {
       const { displayValue, key} = details;
-        
+
       return (
           <option key={index} value={key}>
             {displayValue}

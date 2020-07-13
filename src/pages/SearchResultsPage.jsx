@@ -17,7 +17,7 @@ function SearchResultsPage() {
         </div>
       </div>
       <FooterContainer />
-    
+
     </div>
   );
 }

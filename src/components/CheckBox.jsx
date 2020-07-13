@@ -1,16 +1,16 @@
 import React from "react";
 
-const CheckBox = React.memo(({ details, key }) => {
+const CheckBox = React.memo(({ details, index, checked = false, onChange }) => {
   const { title } = details;
 
   return (
-    <span key={key}>
+    <span key={index}>
       <input
         type="checkbox"
-        key={key}
-        name="checkbox"
+        key={index}
+        name={title}
         className="orderCheckBox"
-        // onChange={this.handleUserChange}
+        onChange={onChange}
       />
       <label htmlFor="checkbox" className="checboxLabel">
         {title.slice(0, 8)}
